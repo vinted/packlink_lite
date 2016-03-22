@@ -1,0 +1,69 @@
+[
+  {
+    "dropoff": true,
+    "name": "Point Relais",
+    "delivery_to_parcelshop": true,
+    "labels_required": true,
+    "customs_required": false,
+    "transit_time": "3-4 Days",
+    "country": "de",
+    "cash_on_delivery": {
+      "apply_percentage_cash_on_delivery": 0,
+      "offered": false,
+      "max_cash_on_delivery": 0,
+      "min_cash_on_delivery": 0
+    },
+    "insurance": {
+      "base_insurance": "25.00",
+      "additional_insurance": true,
+      "max_insurance": 1000,
+      "apply_percentage_aditional_insurance": 5
+    },
+    "currency": "EUR",
+    "available_dates": {
+      "2014/12/22": [
+        "['09:00', '18:00']"
+      ],
+      "2014/12/23": [
+        "['09:00', '18:00']"
+      ],
+      "2014/12/24": [
+        "['09:00', '18:00']"
+      ],
+      "2014/12/18": [
+        "['09:00', '18:00']"
+      ],
+      "2014/12/31": [
+        "['09:00', '18:00']"
+      ],
+      "2014/12/30": [
+        "['09:00', '18:00']"
+      ],
+      "2014/12/29": [
+        "['09:00', '18:00']"
+      ],
+      "2014/12/17": [
+        "['09:00', '18:00']"
+      ],
+      "2014/12/16": [
+        "['09:00', '18:00'] , ['']"
+      ],
+      "2014/12/26": [
+        "['09:00', '18:00']"
+      ],
+      "2015/1/1": [
+        "['09:00', '18:00']"
+      ],
+      "2014/12/19": [
+        "['09:00', '18:00']"
+      ],
+      "2014/12/25": [
+        "['09:00', '18:00']"
+      ]
+    },
+    "carrier_name": "Mondial Relay",
+    "id": 5701,
+    "base_price": 8.26
+  }
+
+]
