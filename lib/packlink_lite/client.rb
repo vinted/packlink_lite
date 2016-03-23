@@ -10,6 +10,7 @@ module PacklinkLite
     end
 
     def post(path, payload)
+      payload = payload.to_json unless payload.is_a?(String)
       response = RestClient.post(url(path), payload, headers)
       handle_response(response)
     end

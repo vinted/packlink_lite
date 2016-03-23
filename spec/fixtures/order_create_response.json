@@ -1,0 +1,12 @@
+{
+  "order_reference": "DE00019732CF",
+  "shipments":[ {
+    "shipment_custom_reference": "eBay_11993382332",
+    "shipment_reference": "DE000193392AB",
+    "insurance_coverage_amount": 750,
+    "total_price": 4.90,
+    "receipt":"http://url/to/receipt"
+  }
+  ],
+  "total_amount": 4.90
+}

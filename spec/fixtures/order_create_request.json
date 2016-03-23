@@ -1,0 +1,42 @@
+{
+  "order_custom_reference": "",
+  "shipments": [
+    {
+      "shipment_custom_reference": "eBay_11993382332",
+      "from": {
+        "name": "Daniel",
+        "surname": "Werner",
+        "company": "Werner corp.",
+        "street1": "Alleestr. 29",
+        "zip_code": "56457",
+        "city": "Westerburg",
+        "state": "",
+        "country": "DE",
+        "phone": "01516113123",
+        "email": ""
+      },
+      "to": {
+        "name": "Helena",
+        "surname": "Zimmermann",
+        "street1": "Schlowiesenstrae 7",
+        "zip_code": "56457",
+        "city": "Westerburg",
+        "country": "DE",
+        "phone": "+491601139291",
+        "email": ""
+      },
+      "packages": [
+        {
+          "width": 50,
+          "height": 40,
+          "length": 40,
+          "weight": 2
+        }
+      ],
+      "service_id": 1999328,
+      "content": "Leggins, Schuhe",
+      "contentvalue": 50
+    }
+
+  ]
+}
