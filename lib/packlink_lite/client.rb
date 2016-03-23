@@ -5,28 +5,39 @@ module PacklinkLite
     def get(path, params = nil)
       url = url(path)
       url+= '?' + build_nested_query(params) if params
-      response = RestClient.get(url, headers)
-      handle_response(response)
+      request(:get, url, headers)
     end
 
     def post(path, payload)
       payload = payload.to_json unless payload.is_a?(String)
-      response = RestClient.post(url(path), payload, headers)
-      handle_response(response)
+      request(:post, url(path), payload, headers)
     end
 
     def delete(path)
-      response = RestClient.delete(url(path))
-      handle_response(response)
+      request(:delete, url(path))
     end
 
     private
+
+    def request(method, *args)
+      response = RestClient.send(method, *args)
+      parse_response(response)
+    rescue RestClient::Exception => e
+      message = extract_error_message(e.http_body) || e.message
+      raise Error.new(message, e.http_body, e.http_code)
+    end
+
+    def extract_error_message(body)
+      result = parse_response(body)
+      result['message'] || result['messages']
+    rescue JSON::ParserError
+    end
 
     def url(path)
       PacklinkLite.url + path
     end
 
-    def handle_response(response)
+    def parse_response(response)
       JSON.parse(response)
     end
 

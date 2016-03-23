@@ -1,5 +1,6 @@
 require 'packlink_lite/version'
 require 'packlink_lite/configuration'
+require 'packlink_lite/errors'
 require 'packlink_lite/client'
 require 'packlink_lite/service'
 require 'packlink_lite/order'
