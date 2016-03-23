@@ -12,6 +12,15 @@ Add this line to your application's Gemfile:
 gem 'packlink_lite'
 ```
 
+## Configuration
+
+```ruby
+PacklinkLite.configure do |config|
+  config.api_key = ENV['PACKLINK_API_KEY']
+  config.testing = true
+end
+```
+
 ## Usage
 
 ### Fetch services list
