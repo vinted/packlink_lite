@@ -10,17 +10,29 @@ Add this line to your application's Gemfile:
 gem 'packlink_lite'
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install packlink_lite
-
 ## Usage
 
-TODO: Write usage instructions here
+### Fetch services list
+
+```ruby
+services = PacklinkLite::Services.all(
+  from: { country: 'FR', zip: 75001 },
+  to: { country: 'FR', zip: 02140 },
+  package: { width: 10.1, height: 10, length: 10, weight: 1 }
+)
+```
+
+### Create order
+
+```ruby
+order = PacklinkLite::Order.create(order_hash)
+```
+
+### Fetch shipment tracking
+
+```ruby
+tracking_history = PacklinkLite::TrackingHistory.find(shipment_reference)
+```
 
 ## Contributing
 
