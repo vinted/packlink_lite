@@ -1,5 +1,7 @@
 # PacklinkLite
 
+[![Build Status](https://travis-ci.org/laurynas/packlink_lite.svg?branch=master)](https://travis-ci.org/laurynas/packlink_lite)
+
 Packlink.com API client
 
 ## Installation
