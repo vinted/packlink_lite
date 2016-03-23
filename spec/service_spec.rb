@@ -1,6 +1,6 @@
 describe PacklinkLite::Service do
-  describe '.find' do
-    subject { described_class.find(params) }
+  describe '.all' do
+    subject { described_class.all(params) }
 
     let(:params) do
       {

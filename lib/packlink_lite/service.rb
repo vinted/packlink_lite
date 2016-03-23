@@ -2,7 +2,7 @@ module PacklinkLite
   class Service
     PATH = 'services'
 
-    def self.find(query)
+    def self.all(query)
       PacklinkLite.client.get(PATH, query)
     end
   end
