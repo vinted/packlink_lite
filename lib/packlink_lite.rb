@@ -5,6 +5,7 @@ require 'packlink_lite/service'
 require 'packlink_lite/order'
 require 'packlink_lite/shipment'
 require 'packlink_lite/label'
+require 'packlink_lite/tracking_history'
 
 module PacklinkLite
   PRODUCTION_URL = 'https://api.packlink.com/v1/'

@@ -1,0 +1,19 @@
+{
+  "history": [
+    {
+      "timestamp": 14242322,
+      "description": "DELIVERED",
+      "city": "MIAMI"
+    },
+    {
+      "timestamp": 14124132,
+      "description": "DESTINATION SCAN",
+      "city": "MIAMI"
+    },
+    {
+      "timestamp": 12424312,
+      "description": "ARRIVAL SCAN",
+      "city": "MIAMI"
+    }
+  ]
+}
