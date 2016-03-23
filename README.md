@@ -27,9 +27,9 @@ end
 
 ```ruby
 services = PacklinkLite::Service.all(
-  from: { country: 'FR', zip: 75001 },
-  to: { country: 'FR', zip: 02140 },
-  package: { width: 10.1, height: 10, length: 10, weight: 1 }
+  from: { country: 'DE', zip: 56457 },
+  to: { country: 'DE', zip: 56457 },
+  packages: { 0 => { width: 10, height: 10, length: 10, weight: 1 } }
 )
 ```
 
