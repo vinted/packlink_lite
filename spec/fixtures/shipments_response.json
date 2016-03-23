@@ -1,0 +1,48 @@
+{
+  "pagination": {
+    "current_page": 1,
+    "total_pages": 1,
+    "total_registers": 9
+  },
+  "shipments": [
+    {
+      "canceled": false,
+      "carrier": "LCE",
+      "collection": {
+        "city": "Deutschland",
+        "country": "Berlin",
+        "email": "test@testing.com",
+        "name": "John Doe",
+        "phone": "01516113123",
+        "postalcode": "75001",
+        "street": "Alleestr 29 "
+      },
+      "collectionDate": "2015-03-18",
+      "content": "shoes",
+      "delivery": {
+        "city": "Deutschland",
+        "country": "Berlin",
+        "email": "test@testing.com",
+        "name": "Jane Doe",
+        "phone": "1601139291",
+        "postalcode": "75001",
+        "street": "Schlowiesenstrae 7 "
+      },
+      "parcel_number": "1",
+      "parcels": [
+        {
+          "height": "15.00",
+          "length": "15.00",
+          "weight": "2.00",
+          "width": "15.00"
+        }
+      ],
+      "price": "7.68",
+      "reference": "DE2015API0000501722",
+      "service": "Chronopost 13",
+      "shipment_custom_reference": "11993382332589",
+      "status": "READY_TO_PRINT",
+      "weight": "2.00"
+    }
+  ]
+}

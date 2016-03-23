@@ -3,6 +3,7 @@ require "packlink_lite/configuration"
 require "packlink_lite/client"
 require "packlink_lite/service"
 require "packlink_lite/order"
+require "packlink_lite/shipment"
 
 module PacklinkLite
   PRODUCTION_URL = 'https://api.packlink.com/v1/'

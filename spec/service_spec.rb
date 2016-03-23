@@ -10,9 +10,11 @@ describe PacklinkLite::Service do
       }
     end
 
+    let(:response_json) { File.read('spec/fixtures/services_response.json') }
+
     before do
       stub_request(:get, 'https://apisandbox.packlink.com/v1/services?from%5Bcountry%5D=FR&from%5Bzip%5D=75001&package%5Bheight%5D=10&package%5Blength%5D=10&package%5Bweight%5D=1&package%5Bwidth%5D=10.1&to%5Bcountry%5D=FR&to%5Bzip%5D=1120')
-        .to_return(status: 200, body: File.read('spec/fixtures/services.json'))
+        .to_return(status: 200, body: response_json)
     end
 
     it 'fetches services' do

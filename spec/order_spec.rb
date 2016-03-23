@@ -4,11 +4,12 @@ describe PacklinkLite::Order do
 
     let(:payload) { JSON.parse(request_json) }
     let(:request_json) { File.read('spec/fixtures/order_create_request.json') }
+    let(:response_json) { File.read('spec/fixtures/order_create_response.json') }
 
     before do
       stub_request(:post, 'https://apisandbox.packlink.com/v1/orders')
         .with(body: payload)
-        .to_return(status: 200, body: File.read('spec/fixtures/order_create_response.json'))
+        .to_return(status: 200, body: response_json)
     end
 
     it 'creates order' do

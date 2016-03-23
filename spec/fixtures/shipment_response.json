@@ -1,0 +1,52 @@
+{
+  "reference": "DE2015API0000003515",
+  "total_taxes": "3.01",
+  "canceled": false,
+  "weight": "1.00",
+  "service": "Point Relais",
+  "collection_date": "2015-04-16",
+  "insurance_coverage": "50.00",
+  "content": "Leggins, Schuhe",
+  "carrier": "Mondial Relay",
+  "content_value": "50.00",
+  "shipment_custom_reference": "eBay_11993382332",
+  "status": "CARRIER_PENDING",
+  "insurance_price": "1.49",
+  "price": "18.86",
+  "collection": {
+    "city": "Paris",
+    "name": "Daniel Werner",
+    "country": "Francia",
+    "phone": "01516113123",
+    "street": "Alleestr . 29",
+    "postalcode": "75001",
+    "email": "test@testing.com"
+  },
+  "delivery": {
+    "city": "Paris",
+    "name": "Helena Zimmermann",
+    "country": "Francia",
+    "phone": "491601139291",
+    "street": "Schlowiesenstrae 7",
+    "postalcode": "75001",
+    "email": "test@testing.com"
+  },
+  "collection_hour": "00:00-24:00",
+  "tracking_codes": [
+    "31016279"
+  ],
+  "orderDate": "2015-04-16",
+  "extras": [
+    "insurance"
+  ],
+  "parcel_number": "1",
+  "parcels": [
+    {
+      "width": "10.00",
+      "length": "10.00",
+      "weight": "1.00",
+      "height": "10.00"
+    }
+  ],
+  "base_price": "15.85"
+}
