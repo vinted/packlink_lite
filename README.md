@@ -26,7 +26,7 @@ end
 ### Fetch services list
 
 ```ruby
-services = PacklinkLite::Services.all(
+services = PacklinkLite::Service.all(
   from: { country: 'FR', zip: 75001 },
   to: { country: 'FR', zip: 02140 },
   package: { width: 10.1, height: 10, length: 10, weight: 1 }
