@@ -5,7 +5,7 @@ describe PacklinkLite::Shipment do
     let(:response_json) { File.read('spec/fixtures/shipments_response.json') }
 
     before do
-      stub_request(:get, "https://apisandbox.packlink.com/v1/shipments")
+      stub_request(:get, 'https://apisandbox.packlink.com/v1/shipments')
         .to_return(status: 200, body: response_json)
     end
 

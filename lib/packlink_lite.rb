@@ -1,9 +1,10 @@
-require "packlink_lite/version"
-require "packlink_lite/configuration"
-require "packlink_lite/client"
-require "packlink_lite/service"
-require "packlink_lite/order"
-require "packlink_lite/shipment"
+require 'packlink_lite/version'
+require 'packlink_lite/configuration'
+require 'packlink_lite/client'
+require 'packlink_lite/service'
+require 'packlink_lite/order'
+require 'packlink_lite/shipment'
+require 'packlink_lite/label'
 
 module PacklinkLite
   PRODUCTION_URL = 'https://api.packlink.com/v1/'
