@@ -29,4 +29,12 @@ module PacklinkLite
   def url
     config.testing? ? SANDBOX_URL : PRODUCTION_URL
   end
+
+  def change_shipment_callback_url(url)
+    client.post('shipments/callback', { url: url }, parse_response: false)
+  end
+
+  def change_tracking_callback_url(url)
+    client.post('shipments/tracking_callback', { url: url }, parse_response: false)
+  end
 end

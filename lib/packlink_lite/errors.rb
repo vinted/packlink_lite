@@ -20,4 +20,6 @@ module PacklinkLite
       inspect
     end
   end
+
+  class ResponseError < Error; end
 end

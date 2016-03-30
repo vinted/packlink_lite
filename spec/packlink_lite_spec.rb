@@ -17,4 +17,30 @@ describe PacklinkLite do
       it { is_expected.to eq 'https://api.packlink.com/v1/' }
     end
   end
+
+  describe '.change_shipment_callback_url' do
+    subject { described_class.change_shipment_callback_url(url) }
+
+    let(:url) { 'test' }
+
+    it 'sets url' do
+      stub_request(:post, 'https://apisandbox.packlink.com/v1/shipments/callback')
+        .with(body: { url: url }.to_json)
+
+      subject
+    end
+  end
+
+  describe '.change_tracking_callback_url' do
+    subject { described_class.change_tracking_callback_url(url) }
+
+    let(:url) { 'test' }
+
+    it 'sets url' do
+      stub_request(:post, 'https://apisandbox.packlink.com/v1/shipments/tracking_callback')
+        .with(body: { url: url }.to_json)
+
+      subject
+    end
+  end
 end

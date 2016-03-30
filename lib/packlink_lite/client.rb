@@ -2,26 +2,33 @@ require 'rest-client'
 
 module PacklinkLite
   class Client
-    def get(path, params = nil)
+    def get(path, params = nil, options = {})
       url = url(path)
       url+= '?' + build_nested_query(params) if params
-      request(:get, url, headers)
+      response = request(:get, url, headers)
+      process_response(response, options)
     end
 
-    def post(path, payload)
+    def post(path, payload, options = {})
       payload = payload.to_json unless payload.is_a?(String)
-      request(:post, url(path), payload, headers)
+      response = request(:post, url(path), payload, headers)
+      process_response(response, options)
     end
 
-    def delete(path)
-      request(:delete, url(path))
+    def delete(path, options = {})
+      response = request(:delete, url(path))
+      process_response(response, options)
     end
 
     private
 
-    def request(method, *args)
-      response = RestClient.send(method, *args)
+    def process_response(response, parse_response: true)
+      return response unless parse_response
       parse_response(response)
+    end
+
+    def request(method, *args)
+      RestClient.send(method, *args)
     rescue RestClient::Exception => e
       message = extract_error_message(e.http_body) || e.message
       raise Error.new(message, e.http_body, e.http_code)
@@ -39,6 +46,8 @@ module PacklinkLite
 
     def parse_response(response)
       JSON.parse(response)
+    rescue JSON::ParserError => e
+      raise ResponseError.new(e.message, response)
     end
 
     def headers
