@@ -21,6 +21,14 @@ PacklinkLite.configure do |config|
 end
 ```
 
+API key can be passed via options too:
+
+```ruby
+PacklinkLite::Service.all(query, api_key: 'mykey')
+PacklinkLite::Order.create(order_hash, api_key: 'mykey')
+
+```
+
 ## Usage
 
 ### Fetch services list

@@ -3,11 +3,13 @@ describe PacklinkLite::Label do
     subject { described_class.all(shipment_reference) }
 
     let(:shipment_reference) { 'ES00019388AB' }
-    let(:response_json) { File.read('spec/fixtures/labels_response.json') }
 
     before do
-      stub_request(:get, "https://apisandbox.packlink.com/v1/shipments/#{shipment_reference}/labels")
-        .to_return(status: 200, body: response_json)
+      stub_api_request(
+        :get,
+        "https://apisandbox.packlink.com/v1/shipments/#{shipment_reference}/labels",
+        'spec/fixtures/labels_response.json'
+      )
     end
 
     it 'fetches labels' do

@@ -2,11 +2,12 @@ describe PacklinkLite::Shipment do
   describe '.all' do
     subject { described_class.all }
 
-    let(:response_json) { File.read('spec/fixtures/shipments_response.json') }
-
     before do
-      stub_request(:get, 'https://apisandbox.packlink.com/v1/shipments')
-        .to_return(status: 200, body: response_json)
+      stub_api_request(
+        :get,
+        'https://apisandbox.packlink.com/v1/shipments',
+        'spec/fixtures/shipments_response.json'
+      )
     end
 
     it 'fetches shipments' do
@@ -19,11 +20,13 @@ describe PacklinkLite::Shipment do
     subject { described_class.find(reference) }
 
     let(:reference) { 'DE2015API0000003515' }
-    let(:response_json) { File.read('spec/fixtures/shipment_response.json') }
 
     before do
-      stub_request(:get, "https://apisandbox.packlink.com/v1/shipments/#{reference}")
-        .to_return(status: 200, body: response_json)
+      stub_api_request(
+        :get,
+        "https://apisandbox.packlink.com/v1/shipments/#{reference}",
+        'spec/fixtures/shipment_response.json'
+      )
     end
 
     it 'fetches shipment' do

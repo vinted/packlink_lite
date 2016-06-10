@@ -1,11 +1,33 @@
 describe PacklinkLite::Client do
+  context 'when API key is not passed' do
+    it 'uses api key from configuration' do
+      stub_request(:get, 'https://apisandbox.packlink.com/v1/services')
+        .with(headers: { 'Authorization' => PacklinkLite.config.api_key })
+        .to_return(body: 'ok')
+
+      subject.get('services')
+    end
+  end
+
+  context 'when API key is passed' do
+    it 'uses api key from configuration' do
+      stub_request(:get, 'https://apisandbox.packlink.com/v1/services')
+        .with(headers: { 'Authorization' => '123' })
+        .to_return(body: 'ok')
+
+      subject.get('services', {}, api_key: '123')
+    end
+  end
+
   context 'with authorization error' do
     before do
-      stub_request(:get, 'https://apisandbox.packlink.com/v1/services')
-        .to_return(status: 401, body: response_json)
+      stub_api_request(
+        :get,
+        'https://apisandbox.packlink.com/v1/services',
+        'spec/fixtures/unauthorized.json',
+        status: 401
+      )
     end
-
-    let(:response_json) { File.read('spec/fixtures/unauthorized.json') }
 
     it 'raises error' do
       expect { subject.get('services') }.to raise_error(PacklinkLite::Error, /The server could not verify/)
@@ -14,11 +36,13 @@ describe PacklinkLite::Client do
 
   context 'with bad request error' do
     before do
-      stub_request(:get, 'https://apisandbox.packlink.com/v1/services')
-        .to_return(status: 401, body: response_json)
+      stub_api_request(
+        :get,
+        'https://apisandbox.packlink.com/v1/services',
+        'spec/fixtures/countries_error.json',
+        status: 401
+      )
     end
-
-    let(:response_json) { File.read('spec/fixtures/countries_error.json') }
 
     it 'raises error' do
       expect { subject.get('services') }.to raise_error(PacklinkLite::Error, /Country from and country to are required/)
