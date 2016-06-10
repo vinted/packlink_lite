@@ -1,4 +1,14 @@
 describe PacklinkLite::Client do
+  context 'when API key is not set' do
+    before do
+      PacklinkLite.config.api_key = nil
+    end
+
+    it 'raises error' do
+      expect { subject.get('services') }.to raise_error(PacklinkLite::Error, /API key/)
+    end
+  end
+
   context 'when API key is not passed' do
     it 'uses api key from configuration' do
       stub_request(:get, 'https://apisandbox.packlink.com/v1/services')
