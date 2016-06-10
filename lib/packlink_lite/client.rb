@@ -34,8 +34,12 @@ module PacklinkLite
     end
 
     def connection(api_key)
+      token = api_key || PacklinkLite.config.api_key
+
+      raise(Error, 'API key is not set') unless token
+
       @connection ||= build_connection
-      @connection.headers['Authorization'] = api_key || PacklinkLite.config.api_key
+      @connection.headers['Authorization'] = token
       @connection
     end
 
