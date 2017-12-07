@@ -4,7 +4,7 @@ module PacklinkLite
     alias_method :testing?, :testing
 
     def timeout
-      @timeout || 60
+      @timeout || 30
     end
   end
 end

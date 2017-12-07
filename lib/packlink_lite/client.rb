@@ -48,7 +48,6 @@ module PacklinkLite
         builder.options[:timeout] = config.timeout
         builder.options[:open_timeout] = config.timeout
 
-        builder.request :retry
         builder.request :json
 
         builder.headers['Accept'] = 'application/json'
