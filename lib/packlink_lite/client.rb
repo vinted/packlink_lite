@@ -29,7 +29,9 @@ module PacklinkLite
     def with_error_handling
       yield
     rescue Faraday::ClientError => e
-      message = extract_error_message(e.response[:body]) || e.message
+      message = extract_error_message(e.response[:body]) if e.response
+      message ||= e.message
+
       raise(Error, message)
     end
 
