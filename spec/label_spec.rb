@@ -5,6 +5,8 @@ describe PacklinkLite::Label do
     let(:shipment_reference) { 'ES00019388AB' }
 
     before do
+      allow(PacklinkLite.config).to receive(:api_key).and_return('dummy-api-key')
+
       stub_api_request(
         :get,
         "https://apisandbox.packlink.com/v1/shipments/#{shipment_reference}/labels",
