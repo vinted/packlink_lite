@@ -3,6 +3,8 @@ describe PacklinkLite::Shipment do
     subject { described_class.all }
 
     before do
+      allow(PacklinkLite.config).to receive(:api_key).and_return('dummy-api-key')
+
       stub_api_request(
         :get,
         'https://apisandbox.packlink.com/v1/shipments',
@@ -22,6 +24,8 @@ describe PacklinkLite::Shipment do
     let(:reference) { 'DE2015API0000003515' }
 
     before do
+      allow(PacklinkLite.config).to receive(:api_key).and_return('dummy-api-key')
+
       stub_api_request(
         :get,
         "https://apisandbox.packlink.com/v1/shipments/#{reference}",

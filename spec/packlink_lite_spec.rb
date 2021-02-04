@@ -23,6 +23,10 @@ describe PacklinkLite do
 
     let(:url) { 'test' }
 
+    before do
+      allow(PacklinkLite.config).to receive(:api_key).and_return('dummy-api-key')
+    end
+
     it 'sets url' do
       stub_request(:post, 'https://apisandbox.packlink.com/v1/shipments/callback')
         .with(body: { url: url }.to_json)
@@ -35,6 +39,10 @@ describe PacklinkLite do
     subject { described_class.change_tracking_callback_url(url) }
 
     let(:url) { 'test' }
+
+    before do
+      allow(PacklinkLite.config).to receive(:api_key).and_return('dummy-api-key')
+    end
 
     it 'sets url' do
       stub_request(:post, 'https://apisandbox.packlink.com/v1/shipments/tracking_callback')

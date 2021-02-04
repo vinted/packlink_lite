@@ -10,6 +10,10 @@ describe PacklinkLite::Client do
   end
 
   context 'when API key is not passed' do
+    before do
+      allow(PacklinkLite.config).to receive(:api_key).and_return('dummy-api-key')
+    end
+
     it 'uses api key from configuration' do
       stub_request(:get, 'https://apisandbox.packlink.com/v1/services')
         .with(headers: { 'Authorization' => PacklinkLite.config.api_key })
@@ -31,6 +35,8 @@ describe PacklinkLite::Client do
 
   context 'with authorization error' do
     before do
+      allow(PacklinkLite.config).to receive(:api_key).and_return('dummy-api-key')
+
       stub_api_request(
         :get,
         'https://apisandbox.packlink.com/v1/services',
@@ -46,6 +52,8 @@ describe PacklinkLite::Client do
 
   context 'with bad request error' do
     before do
+      allow(PacklinkLite.config).to receive(:api_key).and_return('dummy-api-key')
+
       stub_api_request(
         :get,
         'https://apisandbox.packlink.com/v1/services',
