@@ -62,7 +62,7 @@ PacklinkLite.change_tracking_callback_url(url)
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/laurynas/packlink_lite.
+Bug reports and pull requests are welcome on GitHub at https://github.com/vinted/packlink_lite.
 
 
 ## License
