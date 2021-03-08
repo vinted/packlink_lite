@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Packlink.com API client}
   spec.description   = %q{Client to access packlink.com shipping API}
-  spec.homepage      = 'https://github.com/laurynas/packlink_lite'
+  spec.homepage      = 'https://github.com/vinted/packlink_lite'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
