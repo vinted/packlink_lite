@@ -1,0 +1,47 @@
+name: Build and release ruby gem
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+  build-release-pipeline:
+    runs-on: ubuntu-latest
+    container: ruby:2.7.2
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup
+        run: |
+          gem install bundler:1.17.3
+          bundle install
+
+      - name: Test
+        run: bundle exec rake
+
+      - name: Build
+        if: success() && github.ref == 'refs/heads/master'
+        run: |
+          rm pkg/* || true
+          bundle exec rake build
+
+      - name: Release
+        if: success() && github.ref == 'refs/heads/master'
+        run: |
+          touch $HOME/.gem/credentials
+          chmod 600 $HOME/.gem/credentials
+          printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
+          gem push pkg/*
+        env:
+          GEM_HOST_API_KEY: "${{ secrets.RUBYGEMS_AUTH_TOKEN }}"
+      
+      - name: Tag new gem version
+        if: success() && github.ref == 'refs/heads/master'
+        run: |
+          TAG=$(cat ./lib/packlink_lite/version.rb | grep VERSION | sed "s/'//g" | awk '{ print "v"$3 }')
+          ORIGIN=$(echo https://$GIT_CREDENTIALS@github.com/$GITHUB_REPOSTORY.git)
+          git tag -f $TAG
+          git push $ORIGIN --tags
+        env:
+          GIT_CREDENTIALS: "{{ secrets.GIT_CREDENTIALS }}"
