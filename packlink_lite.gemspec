@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'packlink_lite'
   spec.version       = PacklinkLite::VERSION
   spec.authors       = ['Laurynas Butkus']
-  spec.email         = ['laurynas.butkus@gmail.com']
+  spec.email         = ['backend@vinted.com']
 
   spec.summary       = %q{Packlink.com API client}
   spec.description   = %q{Client to access packlink.com shipping API}

@@ -1,10 +1,10 @@
 name: Build and release ruby gem
 
 on:
+  pull_request: 
+    branches: [ master ]
   push:
-    branches: [ $default-branch ]
-  pull_request:
-    branches: [ $default-branch ]
+  workflow_dispatch:
 
 jobs:
   build-release-pipeline:
@@ -14,34 +14,40 @@ jobs:
       - uses: actions/checkout@v2
       - name: Setup
         run: |
-          gem install bundler:1.17.3
+          gem install bundler
           bundle install
 
       - name: Test
         run: bundle exec rake
 
       - name: Build
+        id: build
         if: success() && github.ref == 'refs/heads/master'
         run: |
-          rm pkg/* || true
           bundle exec rake build
+          echo "::set-output name=gem_version::v$(bundle exec rake version)"
 
       - name: Release
         if: success() && github.ref == 'refs/heads/master'
         run: |
+          mkdir -p $HOME/.gem
           touch $HOME/.gem/credentials
           chmod 600 $HOME/.gem/credentials
           printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
           gem push pkg/*
         env:
           GEM_HOST_API_KEY: "${{ secrets.RUBYGEMS_AUTH_TOKEN }}"
-      
-      - name: Tag new gem version
+
+      - name: Tag repo with new gem version
         if: success() && github.ref == 'refs/heads/master'
-        run: |
-          TAG=$(cat ./lib/packlink_lite/version.rb | grep VERSION | sed "s/'//g" | awk '{ print "v"$3 }')
-          ORIGIN=$(echo https://$GIT_CREDENTIALS@github.com/$GITHUB_REPOSTORY.git)
-          git tag -f $TAG
-          git push $ORIGIN --tags
-        env:
-          GIT_CREDENTIALS: "{{ secrets.GIT_CREDENTIALS }}"
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            github.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ steps.build.outputs.gem_version }}",
+              sha: context.sha
+            })
+            
